@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
     [SerializeField] private Transform cam;
+
     [SerializeField] private float speed; // Player Speed
     [SerializeField] private float gravity = -9.81f; // Gravitational Acceleration
     [SerializeField] private float mouseSensitivityX; // Camera X Axis Move Speed
@@ -45,9 +46,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-
         Vector3 move = transform.forward * vertical + transform.right * horizontal;
-
         characterController.Move(move * speed * Time.deltaTime);
 
 
