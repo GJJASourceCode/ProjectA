@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class PlayerController : MonoBehaviour
 {
 
     private CharacterController characterController;
     private Animator animator;
+    private PhotonView pv;
     [SerializeField] private Transform cam;
     [SerializeField] private float speed; // Player Speed
     [SerializeField] private float gravity = -9.81f; // Gravitational Acceleration
@@ -16,17 +19,21 @@ public class PlayerController : MonoBehaviour
 
     private float velocityY = 0;
 
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        pv = GetComponent<PhotonView>();
     }
 
     void Update()
     {
-        MoveCamera();
-        MoveCharacter();
+        if (pv.IsMine)
+        {
+            MoveCamera();
+            MoveCharacter();
+        }
     }
 
     private void MoveCamera()
@@ -48,6 +55,7 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 move = transform.forward * vertical + transform.right * horizontal;
+        move.Normalize();
         animator.SetFloat("Speed X", horizontal);
         animator.SetFloat("Speed Z", vertical);
         move *= speed * Time.deltaTime;
