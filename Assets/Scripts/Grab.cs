@@ -18,6 +18,7 @@ public class Grab : MonoBehaviour
                 hit.transform.SetParent(handPos);
                 hit.transform.localPosition = weapon.grabPos;
                 hit.transform.rotation = Quaternion.Euler(weapon.grabRot);
+                isGrabbing = true;
             }
 
         // Release
