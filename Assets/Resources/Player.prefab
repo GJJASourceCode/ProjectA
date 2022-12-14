@@ -1505,6 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7222410313951529629}
   - component: {fileID: 7222410313951529626}
+  - component: {fileID: 6592789632986641508}
   m_Layer: 0
   m_Name: PT_Medieval_Male_Armor_RightHand
   m_TagString: Player
@@ -1547,6 +1548,20 @@ CapsuleCollider:
   m_Height: 0.43
   m_Direction: 1
   m_Center: {x: 0, y: -0.03, z: -0.04}
+--- !u!114 &6592789632986641508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233733846667433057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d253165587d77b541a1150b57696dc4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handPos: {fileID: 8962177440249081554}
+  lookAtPos: {fileID: 311549567784055511}
 --- !u!1 &2249218675763592161
 GameObject:
   m_ObjectHideFlags: 0
