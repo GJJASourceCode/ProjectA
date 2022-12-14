@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1188545177306675479}
   - component: {fileID: 2869166933537797810}
   - component: {fileID: 15097763675095672}
-  - component: {fileID: 7557237874194955063}
   - component: {fileID: 4582809470032372651}
+  - component: {fileID: 6882708813792071661}
+  - component: {fileID: 3890544847627748217}
   m_Layer: 0
   m_Name: Sword_02
   m_TagString: Untagged
@@ -85,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7557237874194955063
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960577830650536877}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1407623660032272785, guid: ae1770622c5719243b33e6dfecf10aa6, type: 3}
 --- !u!114 &4582809470032372651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +100,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabPos: {x: 0.006, y: -0.026, z: 0.071}
   grabRot: {x: 62.805, y: -2.104, z: -1.058}
+  damage: 8
+--- !u!65 &6882708813792071661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960577830650536877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016740695, y: 0.54383343, z: 0.041655507}
+  m_Center: {x: -0.000011594966, y: 0.19897997, z: 0.0006525211}
+--- !u!65 &3890544847627748217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960577830650536877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01674069, y: 0.01, z: 0.09335709}
+  m_Center: {x: -0.000011595432, y: 0.05, z: -0.00018554929}

@@ -13,7 +13,7 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
     private CameraController cameraController;
 
-    public void Spawn()
+    public void SpawnPlayer()
     {
         int i = Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
         var player = PhotonNetwork.Instantiate("Player", spawnPoints[i].position, spawnPoints[i].rotation);
@@ -23,6 +23,6 @@ public class InGameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         cameraController = FindObjectOfType<CameraController>();
-        Spawn();
+        SpawnPlayer();
     }
 }
