@@ -27,10 +27,8 @@ public class Damage : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            Debug.Log("Collision");
             if (canTakeDamage && hit.gameObject.TryGetComponent<Weapon>(out Weapon weapon))
             {
-                Debug.Log("Weapon Collsion");
                 GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, weapon.damage);
                 StartCoroutine(HalfSecondDelay());
             }
@@ -41,10 +39,8 @@ public class Damage : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            Debug.Log("Collision");
             if (canTakeDamage && other.gameObject.TryGetComponent<Weapon>(out Weapon weapon))
             {
-                Debug.Log("Weapon Collsion");
                 GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, weapon.damage);
                 StartCoroutine(HalfSecondDelay());
             }
