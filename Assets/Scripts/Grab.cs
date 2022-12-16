@@ -27,7 +27,7 @@ public class Grab : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 if (Physics.SphereCast(lookAtPos.position, 1.0f, lookAtPos.forward, out RaycastHit hit, 3.0f))
-                    if (hit.collider.gameObject.TryGetComponent(out Weapon weapon))
+                    if (hit.collider.gameObject.TryGetComponent(out Weapon weapon) && !weapon.isHeld)
                     {
                         if (isGrabbing)
                         {
@@ -49,6 +49,7 @@ public class Grab : MonoBehaviour
         weapon.transform.SetParent(handPos);
         weapon.transform.localPosition = weapon.grabPos;
         weapon.transform.localRotation = Quaternion.Euler(weapon.grabRot);
+        weapon.isHeld = true;
     }
 
 
@@ -57,5 +58,6 @@ public class Grab : MonoBehaviour
     {
         Weapon weapon = GameObject.Find(grappedWeapon).GetComponent<Weapon>();
         weapon.transform.SetParent(GameObject.Find("Environment").transform);
+        weapon.isHeld = false;
     }
 }
