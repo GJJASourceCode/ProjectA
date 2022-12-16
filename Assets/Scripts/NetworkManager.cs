@@ -36,12 +36,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        var props = PhotonNetwork.LocalPlayer.CustomProperties;
-        props["Ready"] = false;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
-        uiManager.lobbyPanel.gameObject.SetActive(false);
-        uiManager.roomPanel.gameObject.SetActive(true);
         Debug.Log("Joined Room");
+        PhotonNetwork.LoadLevel("MainScene");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -49,37 +45,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Join Room Failed");
     }
 
-    public void JoinOrCreateRoom(string roomName)
+    public void JoinOrCreateRoom()
     {
         RoomOptions roomopt = new RoomOptions
         {
-            MaxPlayers = 2,
-        };
-        PhotonNetwork.JoinOrCreateRoom(roomName, roomopt, TypedLobby.Default);
-    }
 
-    public void SetPlayerName(string text)
-    {
-        PhotonNetwork.LocalPlayer.NickName = text;
+        };
+        PhotonNetwork.JoinRandomOrCreateRoom(roomOptions: roomopt);
+
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        uiManager.roomPanel.UpdatePlayerList();
         Debug.Log("Player " + newPlayer.NickName + " Entered");
     }
     public override void OnPlayerLeftRoom(Player leftPlayer)
     {
-        uiManager.roomPanel.UpdatePlayerList();
         Debug.Log("Player " + leftPlayer.NickName + " Left");
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
-    {
-        if (changedProps.ContainsKey("Ready"))
-        {
-            uiManager.roomPanel.UpdatePlayerList();
-        }
-    }
 
 }
