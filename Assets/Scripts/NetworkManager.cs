@@ -22,6 +22,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected To Master");
+        uiManager.lobbyPanel.joinButton.interactable = true;
     }
 
     public override void OnJoinedLobby()

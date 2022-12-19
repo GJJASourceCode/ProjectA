@@ -7,6 +7,7 @@ using TMPro;
 public class LobbyPanel : MonoBehaviour
 {
     public TMP_InputField playerNameField;
+    public Button joinButton;
 
     private NetworkManager networkManager;
 

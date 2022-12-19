@@ -465,7 +465,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Speed X
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 1
     LayerIndex: 0
 --- !u!114 &4758412340788530436
 MonoBehaviour:
