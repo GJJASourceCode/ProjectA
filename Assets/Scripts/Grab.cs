@@ -49,6 +49,7 @@ public class Grab : MonoBehaviour
         weapon.transform.SetParent(handPos);
         weapon.transform.localPosition = weapon.grabPos;
         weapon.transform.localRotation = Quaternion.Euler(weapon.grabRot);
+        Destroy(weapon.gameObject.GetComponent<Rigidbody>());
         weapon.isHeld = true;
     }
 
@@ -59,5 +60,8 @@ public class Grab : MonoBehaviour
         Weapon weapon = GameObject.Find(grappedWeapon).GetComponent<Weapon>();
         weapon.transform.SetParent(GameObject.Find("Environment").transform);
         weapon.isHeld = false;
+        weapon.transform.rotation = Quaternion.identity;
+        var rigid = weapon.gameObject.AddComponent<Rigidbody>();
+        rigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 }
