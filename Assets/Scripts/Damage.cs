@@ -3,25 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Damage : MonoBehaviourPunCallbacks
 {
-    public int health = 100;
+    public int maxHealth = 100;
+    public int currentHealth = 100;
+
 
     private bool canTakeDamage = true;
 
     private PhotonView pv;
 
-    void Start()
+    public Slider hpSlider;
+    void Awake()
     {
         pv = GetComponent<PhotonView>();
+        hpSlider = GameObject.Find("HpBar").GetComponent<Slider>();
+    }
+
+    void Update()
+    {
+        if (pv.IsMine)
+        {
+            hpSlider.value = (float)currentHealth / (float)maxHealth;
+            if (currentHealth <= 0)
+            {
+                PhotonNetwork.LeaveRoom();
+                SceneManager.LoadScene("GameOverScene");
+            }
+        }
     }
 
     [PunRPC]
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("Take Damage: " + damage + ", Remaining Health: " + health);
+        currentHealth -= damage;
+        Debug.Log("Take Damage: " + damage + ", Remaining Health: " + currentHealth);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {

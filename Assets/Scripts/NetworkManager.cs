@@ -40,6 +40,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("MainScene");
     }
 
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Left Room");
+
+    }
+
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         Debug.Log("Join Room Failed");
