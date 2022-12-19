@@ -6,7 +6,6 @@ using TMPro;
 
 public class LobbyPanel : MonoBehaviour
 {
-    public TMP_InputField roomNameField;
     public TMP_InputField playerNameField;
 
     private NetworkManager networkManager;
@@ -19,7 +18,6 @@ public class LobbyPanel : MonoBehaviour
 
     public void JoinRoom()
     {
-        networkManager.JoinOrCreateRoom(roomNameField.text);
-        networkManager.SetPlayerName(playerNameField.text);
+        networkManager.JoinOrCreateRoom();
     }
 }
