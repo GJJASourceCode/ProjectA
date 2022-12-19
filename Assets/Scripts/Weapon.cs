@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public int damage;
     public bool isHeld;
     public float rotationSpeed;
+    public bool isAxe;
 
     void Update()
     {

@@ -10,17 +10,15 @@ public class Damage : MonoBehaviourPunCallbacks
 {
     public int maxHealth = 100;
     public int currentHealth = 100;
-
-
     private bool canTakeDamage = true;
-
     private PhotonView pv;
-
+    private Grab grab;
     public Slider hpSlider;
     void Awake()
     {
         pv = GetComponent<PhotonView>();
         hpSlider = GameObject.Find("HpBar").GetComponent<Slider>();
+        grab = GetComponent<Grab>();
     }
 
     void Update()
@@ -30,6 +28,8 @@ public class Damage : MonoBehaviourPunCallbacks
             hpSlider.value = (float)currentHealth / (float)maxHealth;
             if (currentHealth <= 0)
             {
+                if (GameObject.Find(grab.grappedWeapon).GetComponent<Weapon>().isAxe)
+                    grab.pv.RPC("ReleaseWeapon", RpcTarget.AllBuffered);
                 PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene("GameOverScene");
             }
