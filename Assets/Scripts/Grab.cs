@@ -5,41 +5,31 @@ using Photon.Pun;
 
 public class Grab : MonoBehaviour
 {
-    private bool isGrabbing = false;
 
     [SerializeField] private Transform handPos;
     [SerializeField] private Transform lookAtPos;
 
-    private string grappedWeapon;
-
-    private PhotonView pv;
+    public string grappedWeapon;
+    public PhotonView pv;
+    private bool canGrab = true;
 
     void Start()
     {
         pv = GetComponent<PhotonView>();
+        grappedWeapon = GetComponentInChildren<Weapon>().gameObject.name;
     }
 
-    void Update()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (pv.IsMine)
         {
-            // Grab
-            if (Input.GetMouseButton(0))
+            if (canGrab && hit.collider.gameObject.TryGetComponent(out Weapon weapon) && !weapon.isHeld)
             {
-                if (Physics.SphereCast(lookAtPos.position, 1.0f, lookAtPos.forward, out RaycastHit hit, 3.0f))
-                    if (hit.collider.gameObject.TryGetComponent(out Weapon weapon) && !weapon.isHeld)
-                    {
-                        if (isGrabbing)
-                        {
-                            pv.RPC("ReleaseWeapon", RpcTarget.AllBuffered);
-                        }
-                        pv.RPC("GrabWeapon", RpcTarget.AllBuffered, weapon.gameObject.name);
-                        isGrabbing = true;
-                    }
+                pv.RPC("ReleaseWeapon", RpcTarget.AllBuffered);
+                pv.RPC("GrabWeapon", RpcTarget.AllBuffered, weapon.gameObject.name);
             }
         }
     }
-
 
     [PunRPC]
     public void GrabWeapon(string weaponName)
@@ -57,11 +47,26 @@ public class Grab : MonoBehaviour
     [PunRPC]
     public void ReleaseWeapon()
     {
-        Weapon weapon = GameObject.Find(grappedWeapon).GetComponent<Weapon>();
-        weapon.transform.SetParent(GameObject.Find("Environment").transform);
-        weapon.isHeld = false;
-        weapon.transform.rotation = Quaternion.identity;
-        var rigid = weapon.gameObject.AddComponent<Rigidbody>();
-        rigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        Weapon weapon = GetComponentInChildren<Weapon>();
+        if (weapon.isAxe)
+        {
+            weapon.transform.SetParent(GameObject.Find("Environment").transform);
+            weapon.isHeld = false;
+            weapon.transform.rotation = Quaternion.identity;
+            var rigid = weapon.gameObject.AddComponent<Rigidbody>();
+            rigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        }
+        else
+        {
+            Destroy(weapon.gameObject);
+        }
+        StartCoroutine(TwoSecondsDelay());
+    }
+
+    IEnumerator TwoSecondsDelay()
+    {
+        canGrab = false;
+        yield return new WaitForSeconds(2f);
+        canGrab = true;
     }
 }
