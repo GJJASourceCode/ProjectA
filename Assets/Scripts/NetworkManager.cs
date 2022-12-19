@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private MenuUIManager uiManager;
     void Awake()
     {
-        Screen.SetResolution(960, 540, false);
+        Screen.SetResolution(1920, 1080, true);
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
@@ -44,7 +44,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("Left Room");
-
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
