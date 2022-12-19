@@ -320,7 +320,6 @@ GameObject:
   - component: {fileID: 3061968250089163364}
   - component: {fileID: 5390707647553616399}
   - component: {fileID: 7894840576573253090}
-  - component: {fileID: -3222454889084697391}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -337,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 311549566611851674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.08496509, y: 1.14, z: -0.02322808}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8399304710041964756}
@@ -491,19 +490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb695fe00775a1c4eba5179dbf70e7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3222454889084697391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311549566611851674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a47ea5af296a143bfc3b2094a9518f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!1 &311549567477604863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,8 +1505,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7222410313951529629}
   - component: {fileID: 7222410313951529626}
-  - component: {fileID: 6592789632986641508}
-  - component: {fileID: 5875876522371111575}
   m_Layer: 0
   m_Name: PT_Medieval_Male_Armor_RightHand
   m_TagString: Player
@@ -1563,42 +1547,6 @@ CapsuleCollider:
   m_Height: 0.43
   m_Direction: 1
   m_Center: {x: 0, y: -0.03, z: -0.04}
---- !u!114 &6592789632986641508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2233733846667433057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d253165587d77b541a1150b57696dc4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handPos: {fileID: 8962177440249081554}
-  lookAtPos: {fileID: 311549567784055511}
---- !u!114 &5875876522371111575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2233733846667433057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &2249218675763592161
 GameObject:
   m_ObjectHideFlags: 0

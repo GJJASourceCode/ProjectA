@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuUIManager : MonoBehaviour
 {
     public LobbyPanel lobbyPanel;
+    public RoomPanel roomPanel;
 
 
 }

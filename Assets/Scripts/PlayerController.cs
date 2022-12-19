@@ -66,9 +66,4 @@ public class PlayerController : MonoBehaviour
         characterController.Move(Vector3.up * velocityY * Time.deltaTime);
 
     }
-
-
-
-
-
 }
