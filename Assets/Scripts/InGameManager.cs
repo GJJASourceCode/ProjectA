@@ -24,6 +24,7 @@ public class InGameManager : MonoBehaviourPunCallbacks
 
     Vector3 getRandomPos()
     {
-        return new Vector3(UnityEngine.Random.Range(-4, 4), 0f, UnityEngine.Random.Range(-4, 4));
+        var pos = UnityEngine.Random.insideUnitCircle * 25;
+        return new Vector3(pos.x, 4.69f, pos.y);
     }
 }
